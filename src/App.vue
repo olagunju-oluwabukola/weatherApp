@@ -5,6 +5,7 @@
     <input type="text" placeholder="Search..." class="search-bar" 
      v-model="query" v-on:keypress="fetchWeather" />
    </div>
+    
    <div class="weather-info" v-if="typeof weather.main!= 'undefined'"> 
     <div class="location-box">
      <div class="location"> {{weather.name}}, {{weather.sys.country }}
@@ -23,7 +24,11 @@
 
 <script>
 import axios from "axios";
+
 export default {
+mounted(){
+alert('welcome... Enter a location name.')
+},
 data() {
 return {
 api_key: "c245c900b06627120de42d52eb472c8f",
@@ -31,6 +36,7 @@ url_base: "https://api.openweathermap.org/data/2.5/",
 weather_icon: "http://openweathermap.org/img/wn/",
 query: "",
 weather: {},
+showDiv : 'welcome'
 };
 },
 methods: {
@@ -58,6 +64,7 @@ let year = d.getFullYear();
 return `${month} ${date} ${day} ${year}`;
 },
 },
+
 };
 </script>
 
